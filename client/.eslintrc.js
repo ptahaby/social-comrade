@@ -15,7 +15,7 @@ module.exports = {
       env: {
         node: true,
       },
-      files: ['.eslintrc.{js,cjs}', 'tailwind.config.js'],
+      files: ['.eslintrc.{js,cjs}', 'tailwind.config.js', 'postcss.config.js'],
       parserOptions: {
         sourceType: 'script',
       },
