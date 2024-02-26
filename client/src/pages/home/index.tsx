@@ -1,23 +1,11 @@
 import React from 'react';
-import LeftSidebar from '../../widgets/LeftSidebar';
+import Layout from '../../shared/ui/Layout';
+
 const Home = () => {
-  return (
-    <div>
-      <header>Header</header>
-      <div className="container mx-auto">
-        <main>
-          <div className="mx-auto grid w-10/12 grid-cols-3 gap-6">
-            {/* Left sidebar */}
-            <LeftSidebar />
-            {/* Main section */}
-            <div className="main-section">Hello</div>
-            {/* Right sidebar */}
-            <section></section>
-          </div>
-        </main>
-      </div>
-    </div>
-  );
+  return <div></div>;
 };
 
+Home.getLayout = function getLayout(page: React.ReactNode) {
+  return <Layout>{page}</Layout>;
+};
 export default Home;
