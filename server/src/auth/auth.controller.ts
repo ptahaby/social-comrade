@@ -30,9 +30,9 @@ export class AuthController {
   ) {
     const data = await this.authService.signin(createUserDto);
     response.cookie('refreshToken', data.refreshToken, {
-      maxAge: 120 * 60 * 1000,
+      maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
-      domain: 'localhost',
+      domain: process.env.FRONTEND_DOMAIN,
     });
 
     return data;
