@@ -1,0 +1,11 @@
+{
+    "name": "social-comrade",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "start": "sudo systemctl start mongod && concurrently \"npm run server\" \"npm run client\"",
+      "server": "cd server && npm run start:dev",
+      "client": "cd client && npm run dev"
+    }
+  }
+  

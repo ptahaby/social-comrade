@@ -26,7 +26,7 @@ export class TokenService {
     return token;
   }
 
-  async findToken(refreshToken: string) {
+  async findToken(refreshToken: string): Promise<TokenDocument> {
     const token = await this.tokenModel.findOne({ refreshToken });
     return token;
   }
