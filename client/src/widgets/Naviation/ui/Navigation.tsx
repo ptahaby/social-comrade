@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Dropdown from './Dropdown';
 import Search from './Search';
+import { IoMdNotificationsOutline } from 'react-icons/io';
 
 const Navigation = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -31,16 +32,11 @@ const Navigation = () => {
           </div>
           <Search />
         </div>
-        <nav className="">
-          <ul
-            className="flex justify-between *:rounded-full *:border
-           *:border-sky-100 *:bg-red-50 *:px-2 *:py-0.5 dark:text-red-300
-            dark:*:border-red-500/15 dark:*:bg-red-500/10 *:px-4 gap-4"
-          >
-            <li>Home</li>
-            <li>Media</li>
-            <li>Friends</li>
-            <li>Groups</li>
+        <nav className="flex items-center ">
+          <ul className="flex justify-between *:rounded-full gap-4">
+            <li className="flex self-center ">
+              <IoMdNotificationsOutline className=" text-2xl" />
+            </li>
           </ul>
         </nav>
         <div className="flex justify-end relative">

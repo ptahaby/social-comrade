@@ -2,9 +2,12 @@ import React from 'react';
 import {
   HiOutlineHome,
   HiOutlineUserCircle,
-  HiOutlineRectangleStack,
   HiOutlineTag,
 } from 'react-icons/hi2';
+import { LuMessagesSquare } from 'react-icons/lu';
+
+import { GiThreeFriends } from 'react-icons/gi';
+
 const LeftSidebar = () => {
   return (
     <div className="w-2/3 md:block md:w-full md:col-span-1 bg-white fixed md:sticky top-20 pt-5 h-[85vh] rounded-md border">
@@ -19,12 +22,16 @@ const LeftSidebar = () => {
             <p>profile</p>
           </a>
           <a className="flex items-center gap-2 text-lg font-medium hover:text-red-400">
-            <HiOutlineRectangleStack className="text-xl" />
-            <p>saved</p>
+            <GiThreeFriends className="text-xl" />
+            <p>Comrades</p>
           </a>
           <a className="flex items-center gap-2 text-lg font-medium hover:text-red-400">
             <HiOutlineTag className="text-xl" />
             <p>following</p>
+          </a>
+          <a className="flex items-center gap-2 text-lg font-medium hover:text-red-400">
+            <LuMessagesSquare className="text-xl" />
+            <p>Messages</p>
           </a>
         </div>
       </div>

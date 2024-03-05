@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import LeftSidebar from '../LeftSidebar';
 import RightSidebar from '../RIghtSidebar';
-import Navigation from '../Naviation';
-
+import { Navigation } from '../../../widgets/Naviation';
 type Props = {
   children: React.ReactNode;
 };
