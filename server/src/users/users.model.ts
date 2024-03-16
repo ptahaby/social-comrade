@@ -12,7 +12,7 @@ export class User {
   @Prop()
   password: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'role' })
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'role' }] })
   roles: Role[];
 }
 

@@ -1,11 +1,42 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UserService } from './users.service';
-import { User } from './users.model';
+import { TokenService } from '../token/token.service';
+import { User, UserDocument } from './users.model';
 import * as bcrypt from 'bcrypt';
+import { Request } from 'express';
 
 @Controller('user')
 export class UsersController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly tokenService: TokenService,
+  ) {}
+
+  @Get()
+  async getUser(@Req() request: Request): Promise<User> {
+    const { refreshToken } = request.cookies;
+    const token = await this.tokenService.findToken(refreshToken);
+    if (!token) {
+      throw new UnauthorizedException({ message: 'Token invalid' });
+    }
+
+    const user = await this.userService.getUserById(
+      (token.user as UserDocument).id,
+    );
+
+    if (!user) {
+      throw new UnauthorizedException({ message: 'something wrong' });
+    }
+
+    return user;
+  }
 
   @Post()
   async createUser(
