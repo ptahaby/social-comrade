@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RolesModule } from './roles/roles.module';
 import { TokenModule } from './token/token.module';
+import { FriendsModule } from './friends/friends.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TokenModule } from './token/token.module';
     MongooseModule.forRoot(process.env.DB_URL),
     RolesModule,
     TokenModule,
+    FriendsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
