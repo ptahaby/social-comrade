@@ -8,7 +8,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RolesModule } from './roles/roles.module';
 import { TokenModule } from './token/token.module';
 import { FriendsModule } from './friends/friends.module';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -16,7 +15,7 @@ import { FriendsModule } from './friends/friends.module';
     }),
     UsersModule,
     AuthModule,
-    MongooseModule.forRoot(process.env.DB_URL),
+    MongooseModule.forRoot('mongodb://localhost/comrade'),
     RolesModule,
     TokenModule,
     FriendsModule,

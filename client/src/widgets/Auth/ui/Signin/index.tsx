@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import router from 'next/router';
 import useSwrMutation from 'swr/mutation';
 import { userLogin } from '../../../../entities/user/user.api';
-
+// import useThrottle from '@/shared/hooks/useThrottle';
+import Child from './Child';
 const SignIn = () => {
+  const [input, setInput] = useState('');
+  // const throttledValue = useThrottle(input);
   const { trigger } = useSwrMutation('auth/signin', userLogin, {
     onSuccess() {
       router.push('/home');
     },
   });
-
+  useLayoutEffect(() => {
+    console.log('Parent layout');
+    return () => {
+      console.log('return Parent  Layout');
+    };
+  });
+  useEffect(() => {
+    console.log('Parent  effect');
+    return () => {
+      console.log('return Parent  effect');
+    };
+  });
+  console.log('Parent');
   const onSubmit = (data: FormData) => {
     const value = Object.fromEntries(data.entries());
 
     trigger(value as { email: string; password: string });
   };
-
   return (
     <>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -36,6 +50,7 @@ const SignIn = () => {
             </label>
             <div className="mt-2">
               <input
+                onChange={(e) => setInput(e.target.value)}
                 id="email"
                 name="email"
                 type="email"
@@ -95,6 +110,7 @@ const SignIn = () => {
           </a>
         </p>
       </div>
+      <Child input={input} />
     </>
   );
 };
