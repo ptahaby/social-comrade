@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RolesModule } from './roles/roles.module';
 import { TokenModule } from './token/token.module';
 import { FriendsModule } from './friends/friends.module';
+import { PrismaService } from './prisma.service';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,6 +22,6 @@ import { FriendsModule } from './friends/friends.module';
     FriendsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
